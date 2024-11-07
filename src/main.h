@@ -1,0 +1,8 @@
+//
+// Created by Niklas on 07.11.2024.
+//
+
+#ifndef SDF_LWM2M_CONVERTER_SRC_MAIB_H_
+#define SDF_LWM2M_CONVERTER_SRC_MAIB_H_
+
+#endif //SDF_LWM2M_CONVERTER_SRC_MAIB_H_
