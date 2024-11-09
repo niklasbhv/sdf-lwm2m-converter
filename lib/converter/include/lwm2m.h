@@ -27,6 +27,8 @@
 #define SDF_LWM2M_CONVERTER_LIB_CONVERTER_INCLUDE_LWM2M_H_
 
 #include <string>
+#include <map>
+#include <pugixml.hpp>
 
 namespace lwm2m {
 
@@ -56,6 +58,9 @@ struct Resource {
     std::string range_enumeration;
     std::string units;
     std::string description;
+
+    Resource Parse(pugi::xml_node& resource_node);
+    void Serialize();
 };
 
 struct Object {
@@ -70,6 +75,9 @@ struct Object {
     bool multiple_instances;
     bool mandatory;
     std::map<int, Resource> resources;
+
+    Object Parse(pugi::xml_node& object_node);
+    void Serialize();
 };
 
 }
