@@ -59,7 +59,7 @@ struct Resource {
     std::string units;
     std::string description;
 
-    Resource Parse(pugi::xml_node& resource_node);
+    Resource Parse(const pugi::xml_node& resource_node);
     void Serialize();
 };
 
@@ -76,7 +76,7 @@ struct Object {
     bool mandatory;
     std::map<int, Resource> resources;
 
-    Object Parse(pugi::xml_node& object_node);
+    Object Parse(const pugi::xml_node& object_node);
     void Serialize();
 };
 
