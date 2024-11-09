@@ -42,6 +42,6 @@ int ValidateSdf(const char* path, const char* schema_path);
 //! @param xml_file Path to the file.
 //! @param schema_file Path to the schema_file.
 //! @return 0 on success, negative on failure.
-int ValidateMatter(const char* path, const char* schema_path);
+int ValidateLwm2m(const char* path, const char* schema_path);
 
 #endif //SDF_LWM2M_CONVERTER_LIB_VALIDATOR_INCLUDE_VALIDATOR_H_

@@ -16,8 +16,8 @@
 
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>
+#include <sdf/sdf_cpp_core.h>
 #include "lwm2m.h"
-#include "sdf.h"
 #include "converter.h"
 
 using json = nlohmann::ordered_json;

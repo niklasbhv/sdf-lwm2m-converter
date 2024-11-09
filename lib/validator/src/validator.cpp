@@ -67,7 +67,7 @@ int ValidateSdf(const char* path, const char* schema_path)
 }
 
 //! Function used to validate a xml file against a xsd schema
-int ValidateMatter(const char* path, const char* schema_path) {
+int ValidateLwm2m(const char* path, const char* schema_path) {
     // Try to load the xml file
     xmlDocPtr doc = xmlReadFile(path, NULL, 0);
     if (doc == nullptr) {

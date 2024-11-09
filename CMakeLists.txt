@@ -10,8 +10,6 @@ add_executable(sdf_lwm2m_converter src/main.cpp
         lib/converter/src/sdf_to_lwm2m.cpp
         lib/converter/include/converter.h
         lib/validator/include/validator.h
-        lib/converter/src/sdf.cpp
-        lib/converter/include/sdf.h
         lib/converter/src/lwm2m.cpp
         lib/converter/include/lwm2m.h
         lib/converter/include/mapping.h
@@ -26,5 +24,6 @@ add_subdirectory(lib/validator)
 CPMAddPackage("gh:nlohmann/json@3.11.3")
 CPMAddPackage("gh:zeux/pugixml@1.14")
 CPMAddPackage("gh:p-ranav/argparse@3.0")
+CPMAddPackage("gh:niklasbhv/sdf-cpp-core@0.1.0")
 
-target_link_libraries(sdf_lwm2m_converter validator converter nlohmann_json::nlohmann_json pugixml::pugixml argparse::argparse)
+target_link_libraries(sdf_lwm2m_converter validator converter nlohmann_json::nlohmann_json pugixml::pugixml argparse::argparse sdf_cpp_core)

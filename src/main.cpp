@@ -143,12 +143,12 @@ int main(int argc, char *argv[]) {
                 pugi::xml_document device_xml;
                 LoadXmlFile(path_device_xml.c_str(), device_xml);
                 std::cout << "Converting LwM2M to SDF" << std::endl;
-                ConvertLwm2mToSdf(std::move(device_xml), cluster_xml_list, sdf_model, sdf_mapping);
+                //ConvertLwm2mToSdf(std::move(device_xml), cluster_xml_list, sdf_model, sdf_mapping);
             }
                 // Otherwise we just convert the list of clusters
             else {
                 std::cout << "Converting LwM2M to SDF" << std::endl;
-                ConvertLwm2mToSdf(std::nullopt, cluster_xml_list, sdf_model, sdf_mapping);
+                //ConvertLwm2mToSdf(std::nullopt, cluster_xml_list, sdf_model, sdf_mapping);
             }
 
             // Check if round-tripping was selected
@@ -160,7 +160,7 @@ int main(int argc, char *argv[]) {
                 cluster_xml_list.clear();
 
                 // Convert SDF back to LwM2M
-                ConvertSdfToLwm2m(sdf_model, sdf_mapping, optional_device_xml, cluster_xml_list);
+                //ConvertSdfToLwm2m(sdf_model, sdf_mapping, optional_device_xml, cluster_xml_list);
                 std::cout << "Successfully converted SDF to LwM2M!" << std::endl;
 
                 // Generate the output file path
@@ -259,7 +259,7 @@ int main(int argc, char *argv[]) {
 
         std::optional<pugi::xml_document> optional_device_xml;
         std::list<pugi::xml_document> cluster_xml_list;
-        ConvertSdfToLwm2m(sdf_model_json, sdf_mapping_json, optional_device_xml, cluster_xml_list);
+        //ConvertSdfToLwm2m(sdf_model_json, sdf_mapping_json, optional_device_xml, cluster_xml_list);
 
         // Check if the round-tripping flag was set
         if (program.is_used("--roundtrip")) {
@@ -269,7 +269,7 @@ int main(int argc, char *argv[]) {
             sdf_mapping_json.clear();
 
             // Convert LwM2M back to SDF
-            ConvertLwm2mToSdf(optional_device_xml, cluster_xml_list, sdf_model_json, sdf_mapping_json);
+            //ConvertLwm2mToSdf(optional_device_xml, cluster_xml_list, sdf_model_json, sdf_mapping_json);
             std::cout << "Successfully converted LwM2M to SDF!" << std::endl;
 
             // Generate filenames for SDF based on the -output parameter
