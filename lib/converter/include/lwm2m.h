@@ -39,14 +39,16 @@ enum Type {
     Boolean,
     Opaque,
     Time,
-    ObjectLink
+    ObjectLink,
+    UndefinedType
 };
 
 enum Operations {
     Read,
     Write,
     ReadWrite,
-    Execute
+    Execute,
+    UndefinedOperation
 };
 
 struct Resource {
@@ -59,7 +61,7 @@ struct Resource {
     std::string units;
     std::string description;
 
-    Resource Parse(const pugi::xml_node& resource_node);
+    static Resource Parse(const pugi::xml_node& resource_node);
     void Serialize();
 };
 
@@ -76,7 +78,7 @@ struct Object {
     bool mandatory;
     std::map<int, Resource> resources;
 
-    Object Parse(const pugi::xml_node& object_node);
+    static Object Parse(const pugi::xml_node& object_node);
     void Serialize();
 };
 

@@ -21,7 +21,53 @@ namespace lwm2m {
 
 Resource Resource::Parse(const pugi::xml_node& resource_node) {
     Resource resource;
+    resource.name = resource_node.child("Name").value();
+    std::string operation = resource_node.child("Operations").value();
+    if (operation == "R") {
+        resource.operations = Read;
+    } else if (operation == "W") {
+        resource.operations = Write;
+    } else if (operation == "RW") {
+        resource.operations = ReadWrite;
+    } else if (operation == "E") {
+        resource.operations = Execute;
+    } else {
+        resource.operations = UndefinedOperation;
+    }
 
+    if (resource_node.child("MultipleInstances").value() == "Single") {
+        resource.multiple_instances = false;
+    } else {
+        resource.multiple_instances = true;
+    }
+    if (resource_node.child("Mandatory").value() == "Optional") {
+        resource.mandatory = false;
+    } else {
+        resource.mandatory = true;
+    }
+
+    std::string type = resource_node.child("Type").value();
+    if (type == "String") {
+        resource.type = String;
+    } else if (type == "Integer") {
+        resource.type = Integer;
+    } else if (type == "Float") {
+        resource.type = Float;
+    } else if (type == "Boolean") {
+        resource.type = Boolean;
+    } else if (type == "Opaque") {
+        resource.type = Opaque;
+    } else if (type == "Time") {
+        resource.type = Time;
+    } else if (type == "Objlnk") {
+        resource.type = ObjectLink;
+    } else {
+        resource.type = UndefinedType;
+    }
+
+    resource.range_enumeration = resource_node.child("RangeEnumeration").value();
+    resource.units = resource_node.child("Units").value();
+    resource.description = resource_node.child("Description").value();
     return resource;
 }
 
@@ -50,7 +96,7 @@ Object Object::Parse(const pugi::xml_node& object_node) {
         object.mandatory = true;
     }
     for (const auto child_node : object_node.child("Resource").children()) {
-        object.resources[child_node.attribute("ID").as_int()] = Resource(child_node);
+        object.resources[child_node.attribute("ID").as_int()] = Resource::Parse(child_node);
     }
     return object;
 }
